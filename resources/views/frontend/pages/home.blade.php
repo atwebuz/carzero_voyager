@@ -899,8 +899,8 @@
 
         <div class="news-grid" id="news-grid" data-fetch-articles-url="/load-more">
             <div class="container">
-                <h3 class="my-3">Products</h3>
-                @dump($posts[0])
+                <h3 class="my-3" style="margin: 10px 0">Products</h3>
+                {{-- @dump($posts[0]) --}}
                 <div class="news-grid__wrapper">
                     @foreach ($posts as $post)
                         
@@ -908,12 +908,24 @@
                         <div class="small-article-card__date heading-4">{{$post->created_at->format('d/m/Y F' )}}</div>
 
                         <div class="small-article-card__media">
-                            <img class="small-article-card__image" src="{{ asset('storage/'. $post->image) }}" alt="" title="">
+                            <img class="small-article-card__image" 
+                            src="{{ file_exists(public_path('storage/' . $post->image)) ? asset('storage/'. $post->image) : asset('storage/posts/not.jpg') }}" 
+                            alt="" 
+                            style="height: 300px !important"
+                            title="">
                         </div>
 
                         <div class="small-article-card__title heading-3">{{$post->title}}
                         </div>
-                        <div class="small-article-card__subtitle heading-5">{{$post->meta_description}} </div>
+                        <div 
+                        style="height: 100px !important;
+                          overflow: hidden;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                                line-clamp: 2; 
+                        -webkit-box-orient: vertical;
+                        
+                        " class="small-article-card__subtitle heading-5">{!!$post->body!!} </div>
 
                         <div class="last-news__info-block">
                             <div class="last-news__info-block-reviews">
@@ -946,7 +958,7 @@
                                         d="M13.4311 13.6925C13.3001 13.6925 13.1681 13.6585 13.0471 13.5875L9.27713 11.3385C9.05113 11.2025 8.91113 10.9575 8.91113 10.6935V5.84546C8.91113 5.43146 9.24713 5.09546 9.66113 5.09546C10.0761 5.09546 10.4111 5.43146 10.4111 5.84546V10.2675L13.8161 12.2975C14.1711 12.5105 14.2881 12.9705 14.0761 13.3265C13.9351 13.5615 13.6861 13.6925 13.4311 13.6925Z"
                                         fill="#858585"></path>
                                 </svg>
-                                <div class="last-news__info-block-time-text heading-5">{{$post->created_at->diffForHumans() }}</div>
+                                <div class="last-news__info-block-time-text heading-5">{{$post->updated_at->diffForHumans() }}</div>
                             </div>
                         </div>
                     </a>
