@@ -16,6 +16,7 @@ use TCG\Voyager\Facades\Voyager;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/product/{id}', [HomeController::class, 'show'])->name('home.show');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

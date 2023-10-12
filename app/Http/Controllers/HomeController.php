@@ -11,4 +11,10 @@ class HomeController extends Controller
         $posts = Post::all();
         return view('frontend.pages.home', compact('posts'));
     }
+
+    public function show($id){
+        $post = Post::find($id);
+        // dd($post);
+        return view('frontend.pages.show', compact('post'));
+    }
 }

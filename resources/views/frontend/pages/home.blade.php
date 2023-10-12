@@ -904,7 +904,7 @@
                 <div class="news-grid__wrapper">
                     @foreach ($posts as $post)
                         
-                    <a class="small-article-card" href="showroom/elektromobili-i-zaradnye-stancii-iz-kitaa.html">
+                    <a class="small-article-card" href="{{route('home.show', $post->id)}}">
                         <div class="small-article-card__date heading-4">{{$post->created_at->format('d/m/Y F' )}}</div>
 
                         <div class="small-article-card__media">

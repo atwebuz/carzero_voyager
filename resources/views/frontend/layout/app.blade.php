@@ -19,6 +19,7 @@
     <link href="{{asset("front/css/vendors.c35c43d2bb.css")}}" rel="stylesheet">
     <link href="{{asset("front/css/common.34fc55438a.css")}}" rel="stylesheet">
     <link href="{{asset("front/css/common.34fc55438a.css")}}" rel="stylesheet">
+      
     <link rel="icon" href="favicon.ico">
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
